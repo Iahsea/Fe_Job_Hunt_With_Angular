@@ -1,0 +1,152 @@
+.job-homepage {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  padding-bottom: 50px;
+}
+
+/* Banner */
+.banner {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #0073e6, #00b14f);
+  color: white;
+}
+.banner h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.banner p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.banner .search-bar {
+  display: flex;
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.banner .search-bar input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  font-size: 14px;
+}
+.banner .search-bar button {
+  padding: 12px 20px;
+  background: #00b14f;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.banner .search-bar button:hover {
+  background: #009444;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+.filters select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+/* Job section */
+.job-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.job-section h2 {
+  margin-bottom: 15px;
+  font-size: 22px;
+  color: #0073e6;
+}
+.job-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+  gap: 15px;
+}
+.job-card {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+.job-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.job-title {
+  margin: 0 0 6px;
+  font-size: 18px;
+  color: #0073e6;
+}
+.company {
+  margin: 0;
+  font-weight: bold;
+  color: #444;
+}
+.location, .salary {
+  margin: 2px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Load more */
+.load-more {
+  margin-top: 25px;
+  text-align: center;
+}
+.load-more button {
+  padding: 10px 20px;
+  background: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.load-more button:hover {
+  background: #005bb5;
+}
+
+/* Company section */
+.company-section {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+}
+.company-section h2 {
+  margin-bottom: 15px;
+  font-size: 22px;
+  color: #0073e6;
+}
+.company-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.company-card {
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  flex: 1 1 200px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.company-card img {
+  max-width: 100px;
+  margin-bottom: 10px;
+}
