@@ -1,0 +1,211 @@
+.homepage-container {
+  margin: 20px auto;        /* có khoảng cách với viền ngoài */
+  max-width: 1100px;
+  background-color: #fafafa;   /* đổi từ rgba sang trắng để rõ hơn */
+  border-radius: 16px;      /* bo góc mềm */
+  padding: 20px;            /* cho không gian bên trong */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* bóng đổ tạo cảm giác nổi */
+}
+
+
+/* Banner */
+.banner {
+  background: linear-gradient(90deg, #6a4c2b, #d9a441);
+  color: #fff;
+  padding: 30px 40px;
+  border-radius: 16px;
+  margin: 20px;
+
+  .banner-content {
+    display: flex;
+    justify-content: space-between; /* chữ bên trái, nút bên phải */
+    align-items: center;
+    flex-wrap: wrap; /* mobile sẽ tự xuống hàng */
+    gap: 20px;
+
+    .banner-text {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      h2 {
+        font-size: 24px;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      p {
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+
+    .pro-btn {
+      background: #ffb74d;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      &:hover {
+        background: #ffa726;
+      }
+    }
+  }
+}
+
+
+/* Wrapper filter */
+.filter-panel {
+  margin: 20px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin: 20px;
+
+  .mat-expansion-panel-header {
+    font-weight: 600;
+    font-size: 16px;
+    background: linear-gradient(90deg, #f6d46562, #fd9f8556); 
+    color: #333;
+    height: 45px; 
+  }
+
+  .filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+
+  mat-form-field {
+    width: 160px;
+    font-size: 14px;
+
+    /* --- áp dụng cho input --- */
+    ::ng-deep input.mat-mdc-input-element {
+      height: 40px;
+      padding: 0 8px;
+      font-size: 14px;
+      line-height: 40px;
+    }
+
+    ::ng-deep .mat-mdc-text-field-wrapper {
+      height: 40px;
+      border-radius: 6px;
+      padding: 0 10px;
+    }
+
+    ::ng-deep .mat-mdc-form-field-flex {
+      height: 40px;
+      align-items: center;
+    }
+
+    ::ng-deep .mat-mdc-floating-label {
+      top: 14px !important;     /* đẩy label xuống chút */
+      font-size: 13px !important;
+       line-height: 1.2;
+    }
+}
+
+  ::ng-deep .mat-mdc-select-trigger {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;     /* 👈 giữ font chữ đẹp */
+  }
+
+  ::ng-deep .mat-mdc-select-value {
+    line-height: 40px;
+    font-size: 14px;
+  }
+
+  ::ng-deep .mat-mdc-select-arrow {
+    margin-top: 0; /* căn giữa icon mũi tên */
+  }
+
+  /* button Search */
+  button {
+    height: 40px;
+    padding: 0 14px;
+    min-width: 75px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+}
+
+}
+
+
+
+/* Grid công ty */
+.company-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  padding: 20px;
+  margin: 20px auto; 
+  max-width: 1100px;   /* Căn giữa đẹp hơn */
+}
+
+.company-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border: 1px solid #e6a83d55;   /* đổi viền nhẹ hơn */
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* <-- thêm shadow mặc định */
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  height: 90px;
+  box-shadow: inset 0 3px 10px rgba(230, 169, 61, 0.15),   /* bóng từ trên xuống */
+              inset 0 -3px 10px rgba(230, 169, 61, 0.15); /* bóng từ dưới lên */
+
+  &:hover {
+    border-color: #e6a93d;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); /* đậm hơn khi hover */
+    transform: translateY(-3px);
+  }
+
+  /* Logo */
+  .company-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #fafafa;
+    }
+  }
+
+  /* Thông tin */
+  .company-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    .company-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #222;
+      line-height: 1.4;
+    }
+
+    .company-category {
+      font-size: 14px;
+      color: #777;
+    }
+
+  }
+}
+

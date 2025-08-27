@@ -1,0 +1,96 @@
+<div class="homepage-container">
+
+    <!-- Banner trên cùng -->
+    <div class="banner">
+        <div class="banner-content">
+            <div class="banner-text">
+                <h2>Thương hiệu lớn tiêu biểu</h2>
+                <p>Hàng trăm thương hiệu lớn tiêu biểu đang tuyển dụng trên TopCV Pro</p>
+            </div>
+            <button class="pro-btn">Pro Company</button>
+        </div>
+    </div>
+
+    <!-- Filter với Expansion Panel -->
+    <mat-expansion-panel class="filter-panel"
+                         hideToggle="false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                🔎 Tìm kiếm công ty
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="filter-container">
+            <mat-form-field appearance="outline">
+                <mat-label>Company Name</mat-label>
+                <input matInput
+                       placeholder="Search name"
+                       [(ngModel)]="filter.name">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Address</mat-label>
+                <input matInput
+                       placeholder="Enter address"
+                       [(ngModel)]="filter.address">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <input matInput
+                       placeholder="Description"
+                       [(ngModel)]="filter.description">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Sort By</mat-label>
+                <mat-select [(ngModel)]="filter.sortBy">
+                    <mat-option value="name">Name</mat-option>
+                    <mat-option value="address">Address</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>Order</mat-label>
+                <mat-select [(ngModel)]="filter.order">
+                    <mat-option value="asc">ASC</mat-option>
+                    <mat-option value="desc">DESC</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <button mat-raised-button
+                    color="primary"
+                    (click)="applyFilter()">Search</button>
+        </div>
+    </mat-expansion-panel>
+
+
+
+
+    <!-- Grid danh sách công ty -->
+    <div class="company-grid">
+        <div class="company-card"
+             *ngFor="let company of companies$ | async">
+            <!-- Logo -->
+            <div class="company-logo">
+                <img [src]="company.logo"
+                     alt="{{ company.name }}" />
+            </div>
+
+            <!-- Thông tin -->
+            <div class="company-info">
+                <div class="company-name">{{ company.name }}</div>
+                <div class="company-category">{{ company.address }}</div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Paginator -->
+    <mat-paginator [length]="totalItems"
+                   [pageSize]="pageSize"
+                   [pageIndex]="currentPage"
+                   [pageSizeOptions]="[9, 18, 36, 99]"
+                   (page)="onPageChange($event)">
+    </mat-paginator>
+</div>
