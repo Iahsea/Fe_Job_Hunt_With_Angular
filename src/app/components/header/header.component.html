@@ -1,1 +1,43 @@
-<p class="header-text">header works!</p>
+<header class="header-container mat-elevation-z2">
+    <!-- Logo -->
+    <div class="logo">
+        <img [src]="backendUrl + '/logo/LogoPage.png'"
+             alt="Logo" />
+        <span class="slogan">Tiếp lợi thế - Nối thành công </span>
+    </div>
+
+    <!-- Menu giữa -->
+    <nav class="menu">
+        <a mat-button
+           href="#">Việc làm</a>
+        <a mat-button
+           href="#">Tạo CV</a>
+        <a mat-button
+           href="#">Công cụ</a>
+        <a mat-button
+           href="#">Cẩm nang nghề nghiệp</a>
+        <a mat-button
+           href="#"
+           class="pro-link">
+            TopCV <span class="pro-badge">Pro</span>
+        </a>
+    </nav>
+
+    <!-- Menu phải -->
+    <div class="right-menu">
+        <button mat-icon-button>
+            <mat-icon>notifications</mat-icon>
+        </button>
+        <button mat-icon-button>
+            <mat-icon>chat</mat-icon>
+        </button>
+        <button mat-icon-button>
+            <mat-icon>account_circle</mat-icon>
+        </button>
+
+        <a mat-stroked-button
+           color="primary">Đăng ký</a>
+        <a mat-flat-button
+           color="primary">Đăng nhập</a>
+    </div>
+</header>
