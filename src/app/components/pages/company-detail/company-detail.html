@@ -1,0 +1,82 @@
+<div div
+     class="company-detail-card"
+     *ngIf="company$ | async as c">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <a mat-button
+           color="primary"
+           routerLink="/">
+            <mat-icon>home</mat-icon>
+            Danh sách Công ty
+        </a>
+        <mat-icon class="separator">chevron_right</mat-icon>
+        <span class="current">Thông tin công ty & tin tuyển dụng từ {{ c.name }}</span>
+    </nav>
+
+
+
+
+    <!-- Banner -->
+    <div class="banner">
+        <img src=""
+             alt="Company Banner" />
+    </div>
+
+    <!-- Card thông tin công ty -->
+    <mat-card class="company-info">
+        <div class="company-header">
+            <!-- Logo -->
+            <img class="company-logo"
+                 [src]="c.logo"
+                 alt="{{ c.name }}" />
+
+            <!-- Meta -->
+            <div class="company-meta">
+                <h2 class="company-name">{{ c.name }}</h2>
+                <div class="company-submeta">
+                    <span class="badge">Pro Company</span>
+                </div>
+            </div>
+
+            <!-- Follow button -->
+            <button mat-raised-button
+                    color="primary"
+                    class="follow-btn">
+                <mat-icon class="plus-icon">add</mat-icon>
+                Theo dõi công ty
+            </button>
+        </div>
+    </mat-card>
+
+    <!-- Nội dung chính -->
+    <div class="company-content">
+        <!-- Giới thiệu -->
+        <mat-card class="company-description">
+            <div class="card-header">Giới thiệu công ty</div>
+            <div class="card-body">
+                <p>
+                    {{ isExpanded ? c.description : (c.description | slice:0:250) +
+                    (c.description.length > 250 ? '...' : '') }}
+                </p>
+                <a *ngIf="c.description.length > 250"
+                   class="toggle-link"
+                   (click)="toggleExpand()">
+                    {{ isExpanded ? 'Thu gọn ▲' : 'Xem thêm ▼' }}
+                </a>
+            </div>
+        </mat-card>
+
+        <!-- Thông tin liên hệ -->
+        <mat-card class="company-contact">
+            <div class="card-header">Thông tin liên hệ</div>
+            <div class="card-body">
+                <p><strong>📍 Địa chỉ:</strong> {{ c.address || 'Chưa cập nhật' }}</p>
+                <div class="map">
+                    <img src=""
+                         alt="Google Map" />
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

@@ -31,4 +31,8 @@ export class CompanyService {
     if (order) params = params.set('order', order);
     return this.http.get<[Company]>(`${environment.apiBaseUrl}/companies`, { params });
   }
+
+  getDetailCompany(companyId: string) {
+    return this.http.get(`${environment.apiBaseUrl}/companies/${companyId}`);
+  }
 }

@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyService } from '../../services/company.service';
+import { CompanyService } from '../../../services/company.service';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { Company } from '../../models/company';
+import { Company } from '../../../models/company';
 import { map, Observable, tap } from 'rxjs';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { environment } from '../../environments/environments';
+import { environment } from '../../../environments/environments';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -51,6 +51,7 @@ export class HomepageComponent implements OnInit {
 
   constructor(
     private companyService: CompanyService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -77,11 +78,11 @@ export class HomepageComponent implements OnInit {
         map(res =>
           res.data.result.map((company: Company) => ({
             ...company,
-            logo: `${environment.imagesUrl}/company/${company.logo}` // thêm domain vào logo
+            logo: `${environment.imagesUrl}/company/${company?.logo}` // thêm domain vào logo
           }
           ))
         ),
-
+        tap(data => console.log("check", data))
       )
   }
 
@@ -94,5 +95,11 @@ export class HomepageComponent implements OnInit {
   applyFilter() {
     this.currentPage = 0;
     this.getCompany();
+  }
+
+  onCompanyClick(companyId: string) {
+    debugger;
+    // Điều hướng đến trang detail-company với companyId là tham số
+    this.router.navigate(['/company', companyId]);
   }
 }

@@ -70,7 +70,9 @@
     <!-- Grid danh sách công ty -->
     <div class="company-grid">
         <div class="company-card"
-             *ngFor="let company of companies$ | async">
+             *ngFor="let company of companies$ | async"
+             (click)="onCompanyClick(company._id)">
+
             <!-- Logo -->
             <div class="company-logo">
                 <img [src]="company.logo"
