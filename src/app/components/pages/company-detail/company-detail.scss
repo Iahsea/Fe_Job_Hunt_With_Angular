@@ -1,8 +1,8 @@
 .company-detail-card {
-  position: relative; /* tạo stacking context */
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
   font-family: "Roboto", sans-serif;
   color: #333;
 
@@ -11,15 +11,14 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: "Roboto", sans-serif;
+    font-size: 14px;
 
     a[mat-button] {
       display: flex;
       align-items: center;
       gap: 6px;
       font-weight: 500;
-      font-size: 14px;
-      text-transform: none; // không in hoa như mặc định
+      text-transform: none;
       padding: 4px 8px;
       border-radius: 6px;
 
@@ -30,42 +29,38 @@
 
     .separator {
       font-size: 18px;
-      color: #888;
-      margin-top: 8px;
+      color: #aaa;
+      margin-top: 2px;
     }
 
     .current {
       font-weight: 600;
-      font-size: 14px;
-      color: #333;
+      color: #444;
     }
   }
 
   /* Banner */
   .banner {
-    position: relative;
-    z-index: 0;
     width: 100%;
-    height: 200px;
-    border-radius: 12px;
+    height: 220px;
+    border-radius: 14px;
     overflow: hidden;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      filter: brightness(0.95);
     }
   }
 
-  /* Thông tin công ty */
+  /* Card thông tin công ty */
   .company-info {
-    position: relative;
-    z-index: 10;
-    margin-top: -60px;
-    border-radius: 12px;
+    margin-top: -70px;
+    border-radius: 14px;
     background: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-    padding: 24px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    padding: 28px;
 
     .company-header {
       display: flex;
@@ -74,13 +69,14 @@
       flex-wrap: wrap;
 
       .company-logo {
-        width: 100px;
-        height: 100px;
-        border-radius: 12px;
+        width: 110px;
+        height: 110px;
+        border-radius: 14px;
         object-fit: contain;
         background: #fff;
-        padding: 8px;
-        border: 1px solid #e0e0e0;
+        padding: 10px;
+        border: 1px solid #eee;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
       }
 
       .company-meta {
@@ -88,23 +84,22 @@
 
         .company-name {
           margin: 0;
-          font-size: 22px;
-          font-weight: 600;
+          font-size: 24px;
+          font-weight: 700;
           color: #1a1a1a;
         }
 
         .company-submeta {
-          margin-top: 6px;
+          margin-top: 8px;
           display: flex;
-          flex-wrap: wrap;
-          gap: 12px;
+          gap: 10px;
           font-size: 14px;
           color: #666;
 
           .badge {
             background: linear-gradient(135deg, #ff9800, #f57c00);
             color: #fff;
-            padding: 2px 8px;
+            padding: 2px 10px;
             border-radius: 6px;
             font-size: 13px;
             font-weight: 500;
@@ -113,22 +108,25 @@
       }
 
       .follow-btn {
-        background: linear-gradient(135deg, #00897b, #4db6ac);
+        background: linear-gradient(135deg, #009688, #4db6ac);
         color: white;
         height: 45px;
-        width: 160px;
+        padding: 0 20px;
         font-weight: 500;
-        border-radius: 20px;
-        padding: 6px 14px;
+        border-radius: 22px;
         transition: 0.3s ease;
-        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
 
         .plus-icon {
-          font-size: 22px;
+          font-size: 20px;
         }
 
         &:hover {
-          background: linear-gradient(135deg, #00695c, #26a69a);
+          background: linear-gradient(135deg, #00796b, #26a69a);
+          transform: translateY(-1px);
+          box-shadow: 0 3px 8px rgba(0, 150, 136, 0.3);
         }
       }
     }
@@ -138,17 +136,15 @@
   .company-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 20px;
-    align-items: start;
+    gap: 24px;
 
     mat-card {
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      padding: 0;
+      border-radius: 14px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
       overflow: hidden;
 
       .card-header {
-        background: linear-gradient(135deg, #00897b, #4db6ac);
+        background: linear-gradient(135deg, #009688, #4db6ac);
         color: #fff;
         padding: 12px 16px;
         font-size: 16px;
@@ -156,7 +152,7 @@
       }
 
       .card-body {
-        padding: 16px;
+        padding: 18px;
         background: #fff;
 
         p {
@@ -166,15 +162,15 @@
         }
 
         .toggle-link {
-          color: #00897b;
+          color: #009688;
           font-weight: 500;
           cursor: pointer;
+          margin-top: 10px;
           display: inline-block;
-          margin-top: 8px;
-          transition: color 0.3s ease;
+          transition: 0.3s;
 
           &:hover {
-            color: #00695c;
+            color: #00796b;
             text-decoration: underline;
           }
         }
@@ -192,6 +188,121 @@
           width: 100%;
           height: 200px;
           object-fit: cover;
+        }
+      }
+    }
+  }
+
+  /* Job list */
+  .job-list {
+    .card-body {
+      padding: 18px;
+      background: #fff;
+    }
+
+    .job-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 14px;
+      background: #fafafa;
+      transition: all 0.25s ease;
+
+      &:hover {
+        border-color: #009688;
+        background: #f1fcfa;
+        transform: translateY(-2px);
+      }
+
+      .job-logo {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        margin-right: 16px;
+        background: #fff;
+      }
+
+      .job-info {
+        flex: 1;
+
+        .job-title {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 16px;
+          font-weight: 600;
+          color: #333;
+
+          .badge-top {
+            background: #4caf50;
+            color: #fff;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 4px;
+          }
+
+          .verify {
+            font-size: 18px;
+            color: #4caf50;
+          }
+        }
+
+        .company-name {
+          margin-top: 4px;
+          font-size: 14px;
+          color: #f57c00;
+          font-weight: 500;
+
+          .badge-pro {
+            background: #f57c00;
+            color: #fff;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 6px;
+          }
+        }
+
+        .job-meta {
+          margin-top: 6px;
+          font-size: 13px;
+          color: #666;
+          display: flex;
+          gap: 16px;
+
+          mat-icon {
+            font-size: 16px;
+            vertical-align: middle;
+          }
+        }
+      }
+
+      .job-right {
+        text-align: right;
+        min-width: 120px;
+
+        .salary {
+          margin-bottom: 6px;
+          font-size: 14px;
+          font-weight: 600;
+          color: #2e7d32;
+        }
+
+        button {
+          font-size: 13px;
+          padding: 6px 14px;
+          border-radius: 6px;
+          background: #009688;
+          color: #fff;
+
+          &:hover {
+            background: #00796b;
+          }
         }
       }
     }

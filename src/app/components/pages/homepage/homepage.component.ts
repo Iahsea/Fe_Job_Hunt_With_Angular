@@ -87,6 +87,7 @@ export class HomepageComponent implements OnInit {
   }
 
   onPageChange(event: PageEvent) {
+    debugger
     this.pageSize = event.pageSize;
     this.currentPage = event.pageIndex;
     this.getCompany();

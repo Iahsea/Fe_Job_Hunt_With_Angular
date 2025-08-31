@@ -1,5 +1,4 @@
-<div div
-     class="company-detail-card"
+<div class="company-detail-card"
      *ngIf="company$ | async as c">
 
     <!-- Breadcrumb -->
@@ -13,9 +12,6 @@
         <mat-icon class="separator">chevron_right</mat-icon>
         <span class="current">Thông tin công ty & tin tuyển dụng từ {{ c.name }}</span>
     </nav>
-
-
-
 
     <!-- Banner -->
     <div class="banner">
@@ -78,5 +74,50 @@
                 </div>
             </div>
         </mat-card>
+
+        <!-- Danh sách Job -->
+        <mat-card class="job-list">
+            <div class="card-header">Tuyển dụng</div>
+            <div class="card-body">
+                <div class="job-item"
+                     *ngFor="let job of job$ | async">
+                    <img class="job-logo"
+                         [src]="job.logo"
+                         alt="logo" />
+
+                    <div class="job-info">
+                        <div class="job-title">
+                            <span class="badge-top">TOP</span>
+                            <span class="job-name">{{ job.name }}</span>
+                            <mat-icon class="verify">check_circle</mat-icon>
+                        </div>
+
+                        <div class="company-name">
+                            <span class="badge-pro">Pro</span>
+                            {{ job.company?.name }}
+                        </div>
+
+                        <div class="job-meta">
+                            <span class="location"><mat-icon>location_on</mat-icon> {{ job.location }}</span>
+                            <span class="deadline"><mat-icon>schedule</mat-icon> {{ job.endDate | date }}</span>
+                        </div>
+                    </div>
+
+                    <div class="job-right">
+                        <div class="salary">{{ job.salary | number }} VND</div>
+                        <button mat-raised-button
+                                color="primary">Ứng tuyển</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- Paginator -->
+            <app-pagination [length]="pagination.totalItems"
+                            [pageSize]="pagination.pageSize"
+                            [pageIndex]="pagination.current"
+                            (pageChange)="onPageChange($event)">
+            </app-pagination>
+        </mat-card>
     </div>
+
 </div>
