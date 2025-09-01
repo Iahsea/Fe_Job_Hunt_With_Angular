@@ -115,6 +115,7 @@
             <app-pagination [length]="pagination.totalItems"
                             [pageSize]="pagination.pageSize"
                             [pageIndex]="pagination.current"
+                            [pageSizeOptions]="[3, 9, 18, 27]"
                             (pageChange)="onPageChange($event)">
             </app-pagination>
         </mat-card>

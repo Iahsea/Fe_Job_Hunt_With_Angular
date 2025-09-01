@@ -11,8 +11,8 @@ import { environment } from '../../../environments/environments';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatChipsModule } from '@angular/material/chips';
 import { JobService } from '../../../services/job.service';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { Pagination } from '../../../core/components/pagination/pagination';
+import { PageEvent } from '@angular/material/paginator';
+import { Pagination } from '../../../shared/components/pagination/pagination';
 import { IPagination } from '../../../core/models/pagination';
 
 @Component({
@@ -46,7 +46,7 @@ export class CompanyDetail implements OnInit {
   // phân trang
   pagination: IPagination = {
     totalItems: 0,
-    pageSize: 1,
+    pageSize: 3,
     current: 0
   };
 
@@ -90,10 +90,7 @@ export class CompanyDetail implements OnInit {
       this.filter.name,
       this.filter.skills,
       this.filter.location,
-      this.pagination.pageSize,
-      this.pagination.current + 1,
-      this.filter.sortBy,
-      this.filter.order
+      { ...this.pagination, current: this.pagination.current + 1 }
     ).pipe(
       tap((res: any) => {
         this.pagination.totalItems = res.data.meta.totalItems;

@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { Router } from '@angular/router';
+import { Pagination } from '../../../shared/components/pagination/pagination';
+import { IPagination } from '../../../core/models/pagination';
 
 @Component({
   selector: 'app-homepage',
@@ -24,7 +26,7 @@ import { Router } from '@angular/router';
     MatCardModule,
     MatButtonModule,
     MatDividerModule,
-    MatPaginatorModule,
+    Pagination,
     MatFormFieldModule,
     MatInputModule,         // <-- cần cho matInput
     MatSelectModule,
@@ -37,16 +39,16 @@ export class HomepageComponent implements OnInit {
   companies$!: Observable<Company[]>;
 
   // phân trang
-  totalItems = 0;
-  pageSize = 9;
-  currentPage = 0;
+  pagination: IPagination = {
+    totalItems: 0,
+    pageSize: 9,
+    current: 0
+  };
 
   filter = {
     name: '',
     address: '',
     description: '',
-    sortBy: 'name',
-    order: 'asc'
   };
 
   constructor(
@@ -66,14 +68,11 @@ export class HomepageComponent implements OnInit {
         this.filter.name,
         this.filter.address,
         this.filter.description,
-        this.pageSize,
-        this.currentPage + 1,
-        this.filter.sortBy,
-        this.filter.order
+        { ...this.pagination, current: this.pagination.current + 1 }
       )
       .pipe(
         tap(res => {
-          this.totalItems = res.data.meta.totalItems; // gán tổng số bản ghi từ backend
+          this.pagination.totalItems = res.data.meta.totalItems; // gán tổng số bản ghi từ backend
         }),
         map(res =>
           res.data.result.map((company: Company) => ({
@@ -88,13 +87,13 @@ export class HomepageComponent implements OnInit {
 
   onPageChange(event: PageEvent) {
     debugger
-    this.pageSize = event.pageSize;
-    this.currentPage = event.pageIndex;
+    this.pagination.pageSize = event.pageSize;
+    this.pagination.current = event.pageIndex;
     this.getCompany();
   }
 
   applyFilter() {
-    this.currentPage = 0;
+    this.pagination.current = 0;
     this.getCompany();
   }
 

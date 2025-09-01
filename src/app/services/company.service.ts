@@ -3,32 +3,29 @@ import { Injectable } from '@angular/core';
 import { environment } from '../environments/environments';
 import { Observable } from 'rxjs';
 import { Company } from '../models/company';
+import { IPagination } from '../core/models/pagination';
+import { BaseService } from '../core/abstracts/base.abstract';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CompanyService {
+export class CompanyService extends BaseService {
   constructor(private http: HttpClient) {
+    super();
   }
 
   getCompany(
     name: string,
     address: string,
     description: string,
-    pageSize: number,
-    current: number,
-    sortBy: string,
-    order: string
+    pagination: IPagination
   ): Observable<any> {
-    let params = new HttpParams()
-      .set('name', name)
-      .set('address', address)
-      .set('description', description)
-      .set('pageSize', pageSize.toString())
-      .set('current', current.toString());
+    // tạo HttpParams từ BaseService
+    let params: HttpParams = this.buildPaginationParams(pagination);
 
-    if (sortBy) params = params.set('sortBy', sortBy);
-    if (order) params = params.set('order', order);
+    if (name) params = params.set('name', name);
+    if (address) params = params.set('address', address);
+    if (description) params = params.set('description', description);
     return this.http.get<[Company]>(`${environment.apiBaseUrl}/companies`, { params });
   }
 

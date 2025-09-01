@@ -44,7 +44,7 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Sort By</mat-label>
-                <mat-select [(ngModel)]="filter.sortBy">
+                <mat-select [(ngModel)]="pagination.sortBy">
                     <mat-option value="name">Name</mat-option>
                     <mat-option value="address">Address</mat-option>
                 </mat-select>
@@ -52,7 +52,7 @@
 
             <mat-form-field appearance="outline">
                 <mat-label>Order</mat-label>
-                <mat-select [(ngModel)]="filter.order">
+                <mat-select [(ngModel)]="pagination.order">
                     <mat-option value="asc">ASC</mat-option>
                     <mat-option value="desc">DESC</mat-option>
                 </mat-select>
@@ -89,10 +89,10 @@
     </div>
 
     <!-- Paginator -->
-    <mat-paginator [length]="totalItems"
-                   [pageSize]="pageSize"
-                   [pageIndex]="currentPage"
-                   [pageSizeOptions]="[9, 18, 36, 99]"
-                   (page)="onPageChange($event)">
-    </mat-paginator>
+    <app-pagination [length]="pagination.totalItems"
+                    [pageSize]="pagination.pageSize"
+                    [pageIndex]="pagination.current"
+                    [pageSizeOptions]="[3, 9, 18, 27]"
+                    (pageChange)="onPageChange($event)">
+    </app-pagination>
 </div>
