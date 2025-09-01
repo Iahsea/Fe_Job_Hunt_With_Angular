@@ -200,7 +200,7 @@
     /* Filter panel */
     /* Filter panel Homepage */
     .filter-panel {
-      width: 100%; /* đầy đủ chiều rộng card */
+      width: 100%;
       border-radius: 12px;
       overflow: hidden;
       margin-bottom: 20px;
@@ -210,64 +210,8 @@
         font-size: 15px;
         background: linear-gradient(135deg, #e0f2f1, #ffffff);
         color: #333;
-        height: 42px; // cố định
-        line-height: 42px; // căn giữa text
-      }
-
-      .filter-container {
-        display: grid; /* grid thay vì flex */
-        grid-template-columns: repeat(5, 1fr); /* 5 ô: 4 input + 1 button */
-        gap: 12px;
-        padding: 12px;
-        align-items: end; /* căn button xuống dưới cùng */
-
-        mat-form-field {
-          flex: 1 1 120px; /* auto-fit */
-          max-width: 150px;
-          min-width: 100px;
-
-          /* Input và select */
-          ::ng-deep input.mat-mdc-input-element,
-          ::ng-deep .mat-mdc-select-trigger {
-            height: 32px; /* nhỏ hơn */
-            font-size: 13px;
-            padding: 0 6px;
-            line-height: 32px;
-          }
-
-          ::ng-deep .mat-mdc-text-field-wrapper,
-          ::ng-deep .mat-mdc-form-field-flex {
-            height: 32px;
-            border-radius: 6px;
-            align-items: center;
-          }
-
-          ::ng-deep .mat-mdc-floating-label {
-            top: 10px !important;
-            font-size: 12px !important;
-            line-height: 5.2;
-          }
-
-          mat-label {
-            font-size: 12px;
-          }
-        }
-
-        /* Button Search */
-        button {
-          height: 36px;
-          font-size: 13px;
-          border-radius: 6px;
-          background: #009688;
-          color: #fff;
-          transition: 0.3s;
-          align-self: end; /* căn xuống đáy hàng */
-          justify-self: stretch; /* căn button sang trái nếu cần */
-
-          &:hover {
-            background: #00796b;
-          }
-        }
+        height: 42px;
+        line-height: 42px;
       }
     }
 

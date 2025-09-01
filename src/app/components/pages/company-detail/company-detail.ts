@@ -20,6 +20,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FormsModule } from '@angular/forms';
 import { IJobFilter } from '../../../core/models/filter';
+import { FilterComponent, IFilterField } from '../../../shared/components/filter/filter.component';
+import { JobFilterConfig } from '../../../core/config/job-filter.config';
 
 @Component({
   selector: 'app-company-detail',
@@ -36,7 +38,8 @@ import { IJobFilter } from '../../../core/models/filter';
     MatInputModule,
     MatSelectModule,
     MatExpansionModule,
-    FormsModule
+    FormsModule,
+    FilterComponent
   ],
   templateUrl: './company-detail.html',
   styleUrl: './company-detail.scss'
@@ -46,6 +49,8 @@ export class CompanyDetail implements OnInit {
   isExpanded = false;
 
   job$!: Observable<any[]>;
+
+  filterConfig: IFilterField[] = JobFilterConfig;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -116,13 +121,15 @@ export class CompanyDetail implements OnInit {
     );
   }
 
-  applyFilter() {
+  applyFilter(filter: IJobFilter) {
+    this.filter = filter;
     this.pagination.current = 0;
     const idParam = this.activatedRoute.snapshot.paramMap.get('id');
     if (idParam) {
       this.getJobByCompanyId(idParam);
     }
   }
+
 
 
   onPageChange(event: PageEvent) {

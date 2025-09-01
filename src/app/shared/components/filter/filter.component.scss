@@ -1,0 +1,63 @@
+.filter-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    padding: 12px;
+    align-items: center;
+
+    mat-form-field {
+        flex: 1 1 120px;
+        max-width: 150px;
+        min-width: 100px;
+        margin: 0 !important;
+        padding: 0 !important;
+
+        /* Ẩn subscript wrapper (error/helper text) để không đội button xuống */
+        ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+            display: none !important;
+        }
+
+        /* Input và select */
+        ::ng-deep input.mat-mdc-input-element,
+        ::ng-deep .mat-mdc-select-trigger {
+            height: 32px;
+            font-size: 13px;
+            padding: 0 6px;
+            line-height: 32px;
+        }
+
+        ::ng-deep .mat-mdc-text-field-wrapper,
+        ::ng-deep .mat-mdc-form-field-flex {
+            height: 32px;
+            border-radius: 6px;
+            align-items: center;
+        }
+
+        ::ng-deep .mat-mdc-floating-label {
+            top: 10px !important;
+            font-size: 12px !important;
+            line-height: 5.2;
+        }
+
+        mat-label {
+            font-size: 12px;
+        }
+    }
+
+    /* Button Search */
+    button {
+        height: 32px;
+        font-size: 13px;
+        border-radius: 6px;
+        background: #009688;
+        color: #fff;
+        transition: 0.3s;
+
+        align-self: center; // 👈 chỉ button căn xuống đáy
+        justify-self: stretch;
+
+        &:hover {
+            background: #00796b;
+        }
+    }
+}

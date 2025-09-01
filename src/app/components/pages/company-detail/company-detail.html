@@ -89,50 +89,10 @@
                         </mat-panel-title>
                     </mat-expansion-panel-header>
 
-                    <div class="filter-container">
-                        <mat-form-field appearance="outline">
-                            <mat-label>Job Name</mat-label>
-                            <input matInput
-                                   placeholder="Nhập tên công việc"
-                                   [(ngModel)]="filter.name">
-                        </mat-form-field>
-
-                        <mat-form-field appearance="outline">
-                            <mat-label>Skills</mat-label>
-                            <input matInput
-                                   placeholder="Kỹ năng"
-                                   [(ngModel)]="filter.skills">
-                        </mat-form-field>
-
-                        <mat-form-field appearance="outline">
-                            <mat-label>Location</mat-label>
-                            <input matInput
-                                   placeholder="Địa điểm"
-                                   [(ngModel)]="filter.location">
-                        </mat-form-field>
-
-                        <mat-form-field appearance="outline">
-                            <mat-label>Sort By</mat-label>
-                            <mat-select [(ngModel)]="pagination.sortBy">
-                                <mat-option value="createdAt">Ngày tạo</mat-option>
-                                <mat-option value="name">Job Name</mat-option>
-                                <mat-option value="skill">Skill</mat-option>
-                                <mat-option value="location">Location</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-
-                        <mat-form-field appearance="outline">
-                            <mat-label>Order</mat-label>
-                            <mat-select [(ngModel)]="pagination.order">
-                                <mat-option value="asc">ASC</mat-option>
-                                <mat-option value="desc">DESC</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-
-                        <button mat-raised-button
-                                color="primary"
-                                (click)="applyFilter()">Search</button>
-                    </div>
+                    <app-filter [filter]="filter"
+                                [fields]="filterConfig"
+                                (apply)="applyFilter($event)">
+                    </app-filter>
                 </mat-expansion-panel>
 
                 <!-- Job Items -->

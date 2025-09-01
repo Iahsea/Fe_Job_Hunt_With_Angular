@@ -1,0 +1,24 @@
+<div class="filter-container">
+    <ng-container *ngFor="let field of fields">
+        <mat-form-field appearance="outline"
+                        style="min-width: 120px;">
+            <mat-label>{{ field.label }}</mat-label>
+
+            <ng-container [ngSwitch]="field.type">
+                <input *ngSwitchCase="'text'"
+                       matInput
+                       [(ngModel)]="filter[field.key]" />
+
+                <mat-select *ngSwitchCase="'select'"
+                            [(ngModel)]="filter[field.key]">
+                    <mat-option *ngFor="let opt of field.options"
+                                [value]="opt.value">{{ opt.label }}</mat-option>
+                </mat-select>
+            </ng-container>
+        </mat-form-field>
+    </ng-container>
+
+    <button mat-raised-button
+            color="primary"
+            (click)="onApply()">Search</button>
+</div>

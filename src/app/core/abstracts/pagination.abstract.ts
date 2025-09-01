@@ -9,22 +9,22 @@ export abstract class BasePaginationAbstract {
             .set('current', pagination.current.toString())
             .set('pageSize', pagination.pageSize.toString());
 
-        if (pagination.sortBy) {
+        if (filter.sortBy) {
             debugger
-            params = params.set('sortBy', pagination.sortBy);
+            params = params.set('sortBy', filter.sortBy);
         }
-        if (pagination.order) {
+        if (filter.order) {
             debugger
-            params = params.set('order', pagination.order);
+            params = params.set('order', filter.order);
         }
         if (filter.name) {
-            params = params.set('name', filter.name);
+            params = params.set('name', filter.name || '');
         }
         if (filter.skills) {
-            params = params.set('skills', filter.skills);
+            params = params.set('skills', filter.skills || '');
         }
         if (filter.location) {
-            params = params.set('location', filter.location);
+            params = params.set('location', filter.location || '');
         }
         return params;
     }
