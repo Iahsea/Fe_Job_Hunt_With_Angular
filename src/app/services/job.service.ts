@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { environment } from '../environments/environments';
 import { Observable } from 'rxjs';
 import { IPagination } from '../core/models/pagination';
-import { BaseService } from '../core/abstracts/base.abstract';
+import { BasePaginationAbstract } from '../core/abstracts/pagination.abstract';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class JobService extends BaseService {
+export class JobService extends BasePaginationAbstract {
   constructor(private http: HttpClient) {
     super();
   }

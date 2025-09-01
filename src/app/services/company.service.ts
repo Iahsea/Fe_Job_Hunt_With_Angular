@@ -4,12 +4,12 @@ import { environment } from '../environments/environments';
 import { Observable } from 'rxjs';
 import { Company } from '../models/company';
 import { IPagination } from '../core/models/pagination';
-import { BaseService } from '../core/abstracts/base.abstract';
+import { BasePaginationAbstract } from '../core/abstracts/pagination.abstract';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CompanyService extends BaseService {
+export class CompanyService extends BasePaginationAbstract {
   constructor(private http: HttpClient) {
     super();
   }

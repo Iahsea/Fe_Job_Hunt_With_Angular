@@ -1,7 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { IPagination } from '../models/pagination';
 
-export abstract class BaseService {
+export abstract class BasePaginationAbstract {
     protected buildPaginationParams(pagination: IPagination): HttpParams {
         debugger
         let params = new HttpParams()

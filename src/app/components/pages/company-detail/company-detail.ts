@@ -14,6 +14,11 @@ import { JobService } from '../../../services/job.service';
 import { PageEvent } from '@angular/material/paginator';
 import { Pagination } from '../../../shared/components/pagination/pagination';
 import { IPagination } from '../../../core/models/pagination';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-company-detail',
@@ -25,7 +30,12 @@ import { IPagination } from '../../../core/models/pagination';
     RouterModule,
     MatToolbarModule,
     MatChipsModule,
-    Pagination
+    Pagination,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatExpansionModule,
+    FormsModule
   ],
   templateUrl: './company-detail.html',
   styleUrl: './company-detail.scss'
@@ -55,8 +65,7 @@ export class CompanyDetail implements OnInit {
     name: '',
     skills: '',
     location: '',
-    sortBy: 'createdAt',
-    order: 'desc'
+
   };
 
 
@@ -108,6 +117,15 @@ export class CompanyDetail implements OnInit {
       )
     );
   }
+
+  applyFilter() {
+    this.pagination.current = 0;
+    const idParam = this.activatedRoute.snapshot.paramMap.get('id');
+    if (idParam) {
+      this.getJobByCompanyId(idParam);
+    }
+  }
+
 
   onPageChange(event: PageEvent) {
     debugger
