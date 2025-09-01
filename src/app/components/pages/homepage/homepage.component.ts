@@ -65,9 +65,7 @@ export class HomepageComponent implements OnInit {
     debugger
     this.companies$ = this.companyService.getCompany
       (
-        this.filter.name,
-        this.filter.address,
-        this.filter.description,
+        this.filter,
         { ...this.pagination, current: this.pagination.current + 1 }
       )
       .pipe(

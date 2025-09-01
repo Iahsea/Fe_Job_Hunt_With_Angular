@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Company } from '../models/company';
 import { IPagination } from '../core/models/pagination';
 import { BasePaginationAbstract } from '../core/abstracts/pagination.abstract';
+import { ICompanyFilter } from '../core/models/filter';
 
 @Injectable({
   providedIn: 'root'
@@ -15,17 +16,11 @@ export class CompanyService extends BasePaginationAbstract {
   }
 
   getCompany(
-    name: string,
-    address: string,
-    description: string,
+    filterCompany: ICompanyFilter,
     pagination: IPagination
   ): Observable<any> {
     // tạo HttpParams từ BaseService
-    let params: HttpParams = this.buildPaginationParams(pagination);
-
-    if (name) params = params.set('name', name);
-    if (address) params = params.set('address', address);
-    if (description) params = params.set('description', description);
+    let params: HttpParams = this.buildPaginationParams(pagination, filterCompany);
     return this.http.get<[Company]>(`${environment.apiBaseUrl}/companies`, { params });
   }
 

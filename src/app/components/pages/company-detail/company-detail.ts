@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FormsModule } from '@angular/forms';
+import { IJobFilter } from '../../../core/models/filter';
 
 @Component({
   selector: 'app-company-detail',
@@ -61,11 +62,10 @@ export class CompanyDetail implements OnInit {
   };
 
   // filter cơ bản
-  filter = {
+  filter: IJobFilter = {
     name: '',
     skills: '',
     location: '',
-
   };
 
 
@@ -96,9 +96,7 @@ export class CompanyDetail implements OnInit {
     debugger
     this.job$ = this.jobService.getJobByCompanyId(
       companyId,
-      this.filter.name,
-      this.filter.skills,
-      this.filter.location,
+      this.filter,
       { ...this.pagination, current: this.pagination.current + 1 }
     ).pipe(
       tap((res: any) => {

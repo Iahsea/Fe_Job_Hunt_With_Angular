@@ -4,6 +4,7 @@ import { environment } from '../environments/environments';
 import { Observable } from 'rxjs';
 import { IPagination } from '../core/models/pagination';
 import { BasePaginationAbstract } from '../core/abstracts/pagination.abstract';
+import { IJobFilter } from '../core/models/filter';
 
 
 @Injectable({
@@ -16,19 +17,11 @@ export class JobService extends BasePaginationAbstract {
 
   getJobByCompanyId(
     companyId: string,
-    name: string,
-    skills: string,
-    location: string,
+    filterJob: IJobFilter,
     pagination: IPagination
   ): Observable<any> {
     // tạo HttpParams từ BaseService
-    let params: HttpParams = this.buildPaginationParams(pagination);
-
-    // thêm các filter riêng của Job
-    if (name) params = params.set('name', name);
-    if (skills) params = params.set('skills', skills);
-    if (location) params = params.set('location', location);
-
+    let params: HttpParams = this.buildPaginationParams(pagination, filterJob);
     const url = `${environment.apiBaseUrl}/jobs/company/${companyId}`;
     return this.http.get(url, { params });
   }
