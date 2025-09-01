@@ -16,6 +16,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { Router } from '@angular/router';
 import { Pagination } from '../../../shared/components/pagination/pagination';
 import { IPagination } from '../../../core/models/pagination';
+import { FilterComponent, IFilterField } from '../../../shared/components/filter/filter.component';
+import { CompanyFilterConfig } from '../../../core/config/company-filter.config';
 
 @Component({
   selector: 'app-homepage',
@@ -30,13 +32,16 @@ import { IPagination } from '../../../core/models/pagination';
     MatFormFieldModule,
     MatInputModule,         // <-- cần cho matInput
     MatSelectModule,
-    MatExpansionModule
+    MatExpansionModule,
+    FilterComponent
   ],
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
   companies$!: Observable<Company[]>;
+
+  filterConfig: IFilterField[] = CompanyFilterConfig;
 
   // phân trang
   pagination: IPagination = {
@@ -90,7 +95,8 @@ export class HomepageComponent implements OnInit {
     this.getCompany();
   }
 
-  applyFilter() {
+  applyFilter(filter: any) {
+    this.filter = filter;
     this.pagination.current = 0;
     this.getCompany();
   }
