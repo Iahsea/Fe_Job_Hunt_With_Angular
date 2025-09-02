@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { IJobFilter } from '../../../core/models/filter';
 import { FilterComponent, IFilterField } from '../../../shared/components/filter/filter.component';
 import { JobFilterConfig } from '../../../core/config/job-filter.config';
+import { Job } from '../../../models/job';
 
 @Component({
   selector: 'app-company-detail',
@@ -48,7 +49,7 @@ export class CompanyDetail implements OnInit {
   company$!: Observable<Company>;
   isExpanded = false;
 
-  job$!: Observable<any[]>;
+  job$!: Observable<Job[]>;
 
   filterConfig: IFilterField[] = JobFilterConfig;
 
@@ -112,7 +113,7 @@ export class CompanyDetail implements OnInit {
           debugger;
           return {
             ...job,
-            logo: job.logoJob
+            logoJob: job.logoJob
               ? `${environment.imagesUrl}/job/${job.logoJob}`
               : `${environment.imagesUrl}/company/${job.company?.logo || 'default.png'}`
           };

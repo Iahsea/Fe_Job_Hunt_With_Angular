@@ -1,0 +1,172 @@
+.login-container {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+    background-image: url("../../../../../assets/images/background_login.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    overflow: hidden;
+
+    /* Nửa trái: form login */
+    .login-left {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0); // overlay mờ nhẹ
+            z-index: 1;
+        }
+
+        /* Đường cắt cong sang nửa phải */
+        clip-path: polygon(0 0, 80% 0, 100% 100%, 0 100%);
+
+        .login-box {
+            position: relative;
+            z-index: 3;
+            width: 80%;
+            max-width: 400px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+            .logo {
+                text-align: center;
+                font-size: 2rem;
+                font-weight: bold;
+                margin-bottom: 2rem;
+            }
+
+            mat-form-field {
+                width: 100%;
+                margin-bottom: 1.5rem;
+            }
+
+            .login-btn {
+                width: 100%;
+                padding: 0.8rem;
+                font-size: 1rem;
+                border-radius: 8px;
+                background-color: #28a745; // xanh lá
+                color: #fff; // chữ trắng
+                font-weight: 600;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background-color: #218838; // xanh đậm khi hover
+                }
+            }
+
+            /* Social login */
+            .social-login {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                margin-top: 1.5rem;
+
+                button {
+                    width: 100%;
+                    padding: 0.8rem;
+                    font-size: 1rem;
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 0.5rem;
+                    font-weight: 500;
+                    border: 1px solid #ccc;
+                    background-color: #fff;
+                    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+                    transition: all 0.2s ease;
+                    cursor: pointer;
+
+                    &:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                    }
+
+                    &.google {
+                        border-color: #db4437;
+                        color: #db4437;
+
+                        svg {
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+
+                    &.facebook {
+                        border-color: #4267b2;
+                        color: #4267b2;
+
+                        svg {
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+                }
+            }
+
+            /* Link đăng ký */
+            .register-link {
+                text-align: center;
+                margin-top: 1rem;
+                font-size: 0.95rem;
+
+                a {
+                    color: #0d6efd;
+                    text-decoration: none;
+                    font-weight: 500;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+
+    /* Nửa phải: ảnh nền */
+    .login-right {
+        flex: 1;
+        position: relative;
+        background-position: center;
+        background-size: cover;
+        z-index: 1;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+            z-index: 2;
+        }
+
+        /* đường cong hòa hợp với nửa trái */
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+    }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+
+        .login-left,
+        .login-right {
+            flex: unset;
+            width: 100%;
+            clip-path: none; // bỏ đường cong khi xếp dọc
+        }
+
+        .login-right {
+            height: 200px;
+        }
+    }
+}

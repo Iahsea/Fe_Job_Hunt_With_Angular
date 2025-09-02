@@ -1,6 +1,6 @@
 .footer-container {
   background: #fff;
-  padding: 40px;
+  padding: 40px 20px;
   border-top: 1px solid #eee;
   color: #2c3e50;
   font-size: 14px;
@@ -17,7 +17,8 @@
       max-width: 260px;
 
       .footer-logo img {
-        height: 100px;
+        height: 80px;
+        max-width: 100%;
       }
 
       .slogan {
@@ -30,15 +31,17 @@
         margin: 16px 0;
         display: flex;
         gap: 10px;
+        flex-wrap: wrap;
 
         img {
-          height: 40px;
+          height: 36px;
         }
       }
 
       .social a {
         color: #555;
-        margin-right: 8px;
+        margin-right: 10px;
+        font-size: 18px;
 
         &:hover {
           color: #00945f;
@@ -69,15 +72,6 @@
         }
       }
     }
-
-    .footer-qr {
-      text-align: center;
-
-      img {
-        width: 100px;
-        margin-bottom: 8px;
-      }
-    }
   }
 
   .footer-bottom {
@@ -86,5 +80,50 @@
     font-size: 13px;
     color: #777;
     text-align: center;
+    line-height: 1.6;
+  }
+
+  /* 📱 Responsive */
+  @media (max-width: 1024px) {
+    .footer-top {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      .footer-col {
+        max-width: 100%;
+      }
+
+      .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+        text-align: center;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 30px 15px;
+
+    .footer-top {
+      gap: 20px;
+
+      .footer-links {
+        grid-template-columns: 1fr; // stack links
+        gap: 15px;
+      }
+
+      .apps {
+        justify-content: center;
+      }
+
+      .social {
+        margin-top: 10px;
+      }
+    }
+
+    .footer-bottom {
+      font-size: 12px;
+      padding-top: 12px;
+    }
   }
 }

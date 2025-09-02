@@ -16,7 +16,7 @@
     gap: 8px;
 
     img {
-      height: 65px;
+      height: 55px;
       cursor: pointer;
     }
 
@@ -37,7 +37,7 @@
       text-decoration: none;
 
       &:hover {
-        color: #00945f; // xanh TopCV
+        color: #00945f;
       }
     }
 
@@ -83,6 +83,61 @@
 
       &:hover {
         background: #f9f9f9;
+      }
+    }
+  }
+
+  /* 📱 Responsive */
+  @media (max-width: 1024px) {
+    padding: 6px 20px;
+
+    .slogan {
+      display: none; // ẩn slogan cho gọn
+    }
+
+    .menu {
+      gap: 12px;
+
+      a {
+        font-size: 14px;
+      }
+    }
+
+    .right-menu {
+      gap: 8px;
+
+      a {
+        font-size: 13px;
+        padding: 4px 10px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .menu {
+      display: none; // ẩn menu giữa
+    }
+
+    .menu-toggle {
+      display: block;
+      font-size: 22px;
+      cursor: pointer;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 6px 12px;
+
+    .logo img {
+      height: 45px;
+    }
+
+    .right-menu {
+      gap: 6px;
+
+      a {
+        font-size: 12px;
+        padding: 3px 8px;
       }
     }
   }

@@ -99,8 +99,8 @@
                 <div class="job-item"
                      *ngFor="let job of job$ | async">
                     <img class="job-logo"
-                         [src]="job.logo"
-                         alt="logo" />
+                         [src]="job.logoJob"
+                         alt="logojob" />
 
                     <div class="job-info">
                         <div class="job-title">
@@ -111,7 +111,7 @@
 
                         <div class="company-name">
                             <span class="badge-pro">Pro</span>
-                            {{ job.company?.name }}
+                            {{ job.company.name }}
                         </div>
 
                         <div class="job-meta">

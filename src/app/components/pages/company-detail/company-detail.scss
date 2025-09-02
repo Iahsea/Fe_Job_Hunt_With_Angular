@@ -12,6 +12,7 @@
     align-items: center;
     gap: 8px;
     font-size: 14px;
+    flex-wrap: wrap;
 
     a[mat-button] {
       display: flex;
@@ -95,6 +96,7 @@
           gap: 10px;
           font-size: 14px;
           color: #666;
+          flex-wrap: wrap;
 
           .badge {
             background: linear-gradient(135deg, #ff9800, #f57c00);
@@ -178,6 +180,7 @@
     }
 
     .company-contact {
+      align-self: start;
       .map {
         width: 100%;
         border-radius: 10px;
@@ -197,8 +200,6 @@
   .job-list {
     cursor: pointer;
 
-    /* Filter panel */
-    /* Filter panel Homepage */
     .filter-panel {
       width: 100%;
       border-radius: 12px;
@@ -229,6 +230,7 @@
       margin-bottom: 14px;
       background: #fafafa;
       transition: all 0.25s ease;
+      flex-wrap: wrap;
 
       &:hover {
         border-color: #009688;
@@ -255,6 +257,7 @@
           gap: 6px;
           font-size: 16px;
           font-weight: 600;
+          flex-wrap: wrap;
 
           .badge-top {
             background: #4caf50;
@@ -275,6 +278,7 @@
           font-size: 14px;
           color: #f57c00;
           font-weight: 500;
+          flex-wrap: wrap;
 
           .badge-pro {
             background: #f57c00;
@@ -292,6 +296,7 @@
           color: #666;
           display: flex;
           gap: 16px;
+          flex-wrap: wrap;
 
           mat-icon {
             font-size: 16px;
@@ -323,6 +328,50 @@
             background: #00796b;
           }
         }
+      }
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .company-content {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .company-info {
+      padding: 20px;
+
+      .company-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .job-item {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+
+      .job-right {
+        margin-top: 10px;
+        text-align: left;
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .company-info .company-header .company-meta .company-name {
+      font-size: 20px;
+    }
+
+    .job-item {
+      padding: 12px;
+      .job-logo {
+        width: 50px;
+        height: 50px;
       }
     }
   }
