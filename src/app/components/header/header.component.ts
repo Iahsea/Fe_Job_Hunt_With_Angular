@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { environment } from '../../environments/environments';
 import { RouterModule } from '@angular/router';
 
@@ -16,6 +16,21 @@ import { RouterModule } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   public backendUrl = environment.imagesUrl;
+  public isLoggedIn = false;
+
+  ngOnInit(): void {
+    this.isLoggedIn = !!localStorage.getItem('token');
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.isLoggedIn = false;
+    // optional: reload lại trang hoặc điều hướng
+    window.location.href = '/login';
+  }
+
+
 }

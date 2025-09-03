@@ -26,20 +26,29 @@
 
     <!-- Menu phải -->
     <div class="right-menu">
-        <button mat-icon-button>
-            <mat-icon>notifications</mat-icon>
-        </button>
-        <button mat-icon-button>
-            <mat-icon>chat</mat-icon>
-        </button>
-        <button mat-icon-button>
-            <mat-icon>account_circle</mat-icon>
-        </button>
+        <!-- Khi đã đăng nhập -->
+        <ng-container *ngIf="isLoggedIn; else guestMenu">
+            <button mat-icon-button>
+                <mat-icon>notifications</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon>chat</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon>account_circle</mat-icon>
+            </button>
+            <a mat-stroked-button
+               color="warn"
+               (click)="logout()">Đăng xuất</a>
+        </ng-container>
 
-        <a mat-stroked-button
-           color="primary">Đăng ký</a>
-        <a mat-flat-button
-           routerLink="/login"
-           color="primary">Đăng nhập</a>
+        <!-- Khi chưa đăng nhập -->
+        <ng-template #guestMenu>
+            <a mat-stroked-button
+               color="primary">Đăng ký</a>
+            <a mat-flat-button
+               routerLink="/login"
+               color="primary">Đăng nhập</a>
+        </ng-template>
     </div>
 </header>
