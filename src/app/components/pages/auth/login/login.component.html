@@ -65,12 +65,14 @@
 
             <!-- Social login -->
             <div class="social-login">
-                <button class="google">
+                <button class="google"
+                        (click)="loginWithGoogle()">
                     <!-- SVG Google icon -->
                     Đăng nhập với Google
                 </button>
 
-                <button class="facebook">
+                <button class="facebook"
+                        (click)="loginWithFacebook()">
                     <!-- SVG Facebook icon -->
                     Đăng nhập với Facebook
                 </button>

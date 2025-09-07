@@ -5,6 +5,7 @@ import { LoginComponent } from './components/pages/auth/login/login.component';
 import { RegisterComponent } from './components/pages/auth/register/register.component';
 import { DefaultLayout } from './components/layouts/default-layout/default-layout';
 import { AuthLayout } from './components/layouts/auth-layout/auth-layout';
+import { LoginSuccessComponent } from './components/pages/auth/login-success/login-success.component';
 
 export const routes: Routes = [
     // Layout mặc định: CÓ header + footer
@@ -25,6 +26,7 @@ export const routes: Routes = [
         children: [
             { path: 'login', component: LoginComponent },
             { path: 'register', component: RegisterComponent },
+            { path: 'login-success', component: LoginSuccessComponent },
         ]
     },
 ];

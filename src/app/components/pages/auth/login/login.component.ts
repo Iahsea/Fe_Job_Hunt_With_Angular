@@ -67,7 +67,7 @@ export class LoginComponent {
         }
         // Lưu token vào localStorage nếu server trả về
         if (res.data.access_token) {
-          this.authService.saveToken(res.data.access_token);
+          this.authService.saveTokenToLocalStorage(res.data.access_token);
           this.authService.saveUser(this.userResponse);
         }
         this.router.navigate(['/']); // chuyển hướng về homepage
@@ -82,5 +82,15 @@ export class LoginComponent {
       }
     });
   }
+
+  loginWithGoogle() {
+    debugger
+    window.location.href = `${environment.apiBaseUrl}/auth/google/login`;
+  }
+
+  loginWithFacebook() {
+    window.location.href = `${environment.apiBaseUrl}/auth/facebook/login`;
+  }
+
 
 }
